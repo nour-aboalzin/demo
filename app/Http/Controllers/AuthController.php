@@ -1,11 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
+
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
+
 
 class AuthController extends Controller{
 
@@ -22,6 +25,11 @@ class AuthController extends Controller{
     public function register(Request $request)
     {
         return view('register');
+    }
+
+   public function add_post(Request $request)
+    {
+        dd($request->all());
     }
 
     public function register_post(Request $request){
@@ -68,6 +76,11 @@ class AuthController extends Controller{
         return redirect()->back()->with('error', 'please enter the correct credentails');
       }
     }
+
+public function logout(){
+    Auth::logout();
+    return redirect(url('/'));
+}
 
 }
 
